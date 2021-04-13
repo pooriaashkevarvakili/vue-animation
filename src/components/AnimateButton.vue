@@ -1,9 +1,12 @@
 <template>
   <div class="text-primary py-4 text-center" style="border:1px solid #000">
-<button v-if="!showOnButton" class="btn btn-primary" @click.prevent="onShowButton">
-  off
-</button>
-  <button class="btn btn-primary" @click.prevent="onShowButton">on </button>
+    <transition name="button" mode="in-out">
+    <button v-if="!showButton" class="btn btn-primary" @click.prevent="onShowButton()">
+      off
+    </button>
+    <button v-else class="btn btn-primary" @click.prevent="onShowButton()">on
+    </button>
+    </transition>
   </div>
 </template>
 
@@ -11,18 +14,29 @@
 export default {
   data(){
     return{
-showOnButton:true
+      showButton:true
     }
   },
-  name: "AnimateButton",
   methods:{
     onShowButton(){
-this.showOnButton=!this.showOnButton
+      this.showButton=!this.showButton
     }
   }
 }
 </script>
 
 <style scoped>
-
+.button-enter-from,.button-leave-to{
+  opacity:0;
+transform: translateX(-30px);
+}
+.button-enter-to,
+.button-leave-from
+{
+  opacity:1;
+  transform: translateX(-30px);
+}
+.button-enter-active,.button-leave-active{
+transition: all 1s;
+}
 </style>

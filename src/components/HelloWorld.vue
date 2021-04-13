@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
       <div class="box" :class="{animate:animate}"></div>
       <div class="my-3">
         <button class="btn btn-primary" @click.prevent="onAnimateClick()">click me</button>
@@ -27,6 +27,13 @@
 
 </animate-button>
           </div>
+        <div class="col-md-6">
+          <div class="my-3">
+          <transition-events>
+
+          </transition-events>
+            </div>
+        </div>
         <div>
           <button @click.prevent="onopenDialog()" class="btn btn-primary">dialog modal</button> </div>
       </div>
@@ -40,12 +47,14 @@ import TheParagraph from "./TheParagraph"
 import AnimateParagraph from "./AnimateParagraph"
 import DialogModal from "./DialogModal"
 import AnimateButton from "./AnimateButton"
+import TransitionEvents from "./TransitionEvents";
 export default {
   name: 'HelloWorld',
   components:{
     TheParagraph,
     AnimateParagraph,
     DialogModal,
+    TransitionEvents,
     AnimateButton
   },
   data(){
